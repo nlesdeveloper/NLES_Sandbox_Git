@@ -1,6 +1,6 @@
-trigger EventTrigger on Event(before insert, before update) {
+trigger EventTrigger on Event(before insert) {
   if (Trigger.isBefore) {
-    if (Trigger.isInsert || Trigger.isUpdate) {
+    if (Trigger.isInsert) {
       EventTriggerHandler.eventTriggerHandlerMethod(Trigger.new);
     }
   }
