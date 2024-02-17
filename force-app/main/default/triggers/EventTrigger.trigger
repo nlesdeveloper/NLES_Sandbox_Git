@@ -1,7 +1,10 @@
-trigger EventTrigger on Event(before insert) {
+trigger EventTrigger on Event(before insert, before update) {
   if (Trigger.isBefore) {
     if (Trigger.isInsert) {
-      EventTriggerHandler.eventTriggerHandlerMethod(Trigger.new);
+      EventTriggerHandler.eventTriggerHandlerBeforeInsert(Trigger.New);
+    }
+    if (Trigger.isUpdate) {
+      EventTriggerHandler.eventTriggerHandlerBeforeUpdate(Trigger.New, Trigger.OldMap);
     }
   }
 }
