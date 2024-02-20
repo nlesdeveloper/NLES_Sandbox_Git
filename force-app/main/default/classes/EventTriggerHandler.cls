@@ -41,7 +41,7 @@ public with sharing class EventTriggerHandler {
     for (Event eachNewEvent : triggerNew) {
       if (mapRoomsAndListEvents.containsKey(eachNewEvent.Subject)) {
         for (Event eachOrgEvent : mapRoomsAndListEvents.get(eachNewEvent.Subject)) {
-        if (eachNewEvent.Subject != triggerOldMap.get(eachNewEvent.Id).Subject || eachNewEvent.StartDateTime == triggerOldMap.get(eachNewEvent.Id).StartDateTime || eachNewEvent.EndDateTime == triggerOldMap.get(eachNewEvent.Id).EndDateTime) {
+        if (eachNewEvent.Subject != triggerOldMap.get(eachNewEvent.Id).Subject || eachNewEvent.StartDateTime != triggerOldMap.get(eachNewEvent.Id).StartDateTime || eachNewEvent.EndDateTime != triggerOldMap.get(eachNewEvent.Id).EndDateTime) {
           if ((eachNewEvent.StartDateTime >= (eachOrgEvent.StartDateTime.addHours(-1)) && eachNewEvent.StartDateTime < (eachOrgEvent.EndDateTime.addHours(+1)) ||
               (eachNewEvent.EndDateTime > (eachOrgEvent.StartDateTime.addHours(-1)) && eachNewEvent.EndDateTime <= (eachOrgEvent.EndDateTime.addHours(+1))))) {
               eachNewEvent.addError('Conflict: There is already a scheduled event in this room for this time interval.');

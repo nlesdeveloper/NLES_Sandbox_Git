@@ -2,30 +2,49 @@
 private class EventTriggerHandlerTest {
     @testSetup
     static void testSetup() {
-        List<Event> newEvents = new List<Event>();
-        for (Integer i = 0; i < 100; i++) {
-            if(i<50){
-                newEvents.add(new Event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(2), EndDateTime = Datetime.now().addHours(3)));
-            }  else{
-                newEvents.add(new Event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(2), EndDateTime = Datetime.now().addHours(3)));
-            }
-            insert newEvents;
-        }
+        List<event> listEvents = new List<Event>{
+            new event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(0), EndDateTime = Datetime.now().addHours(2)), 
+            new event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(6), EndDateTime = Datetime.now().addHours(8)),
+            new event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(0), EndDateTime = Datetime.now().addHours(2)), 
+            new event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(6), EndDateTime = Datetime.now().addHours(8))};
+        insert listEvents;
     }
     
     @isTest
     static void testEventTriggerHandlerBeforeInsert() {
-        // Retrieve the test Event
-        List<Event> testEvents = [SELECT Id, Subject, StartDateTime, EndDateTime FROM Event];
         Boolean exceptionThrown = false;
-        // Call the EventTriggerHandler method
+        
+        List<event> listEvents = new List<Event>{
+            new event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(1), EndDateTime = Datetime.now().addHours(4)), 
+            new event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(-2), EndDateTime = Datetime.now().addHours(1))};
+
         try{
             Test.startTest();
-            EventTriggerHandler.eventTriggerHandlerBeforeInsert(new List<Event>{new Event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(2), EndDateTime = Datetime.now().addHours(3))});
+            insert listEvents;
             Test.stopTest();
         }catch (Exception e){
             exceptionThrown = true;
-            // assert
+            Boolean expectedExceptionThrown =  (e.getMessage().contains('Conflict:')) ? true : false; 
+            Assert.areEqual(true, expectedExceptionThrown, e.getMessage()); 
+        }
+        Assert.areEqual(true, exceptionThrown, 'No exception was thrown');
+    }
+
+    @isTest
+    static void testEventTriggerHandlerBeforeUpdate() {
+        List<Event> testEvents = [SELECT Subject, StartDateTime, EndDateTime FROM Event];
+        Boolean exceptionThrown = false;
+        
+        testEvents[1].Subject = 'Trillium';
+        testEvents[2].StartDateTime = Datetime.now().addHours(2);
+        testEvents[3].EndDateTime = Datetime.now().addHours(6);
+
+        try{
+            Test.startTest();
+            update testEvents;
+            Test.stopTest();
+        }catch (Exception e){
+            exceptionThrown = true;
             Boolean expectedExceptionThrown =  (e.getMessage().contains('Conflict:')) ? true : false; 
             Assert.areEqual(true, expectedExceptionThrown, e.getMessage()); 
         }
