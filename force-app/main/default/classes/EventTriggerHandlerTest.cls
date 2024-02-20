@@ -6,7 +6,8 @@ private class EventTriggerHandlerTest {
             new event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(0), EndDateTime = Datetime.now().addHours(2)), 
             new event(Subject = 'Board Room', StartDateTime = Datetime.now().addHours(6), EndDateTime = Datetime.now().addHours(8)),
             new event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(0), EndDateTime = Datetime.now().addHours(2)), 
-            new event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(6), EndDateTime = Datetime.now().addHours(8))};
+            new event(Subject = 'Trillium', StartDateTime = Datetime.now().addHours(6), EndDateTime = Datetime.now().addHours(8))
+        };
         insert listEvents;
     }
     
