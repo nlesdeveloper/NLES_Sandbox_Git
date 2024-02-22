@@ -26,7 +26,7 @@ private class EventTriggerHandlerTest {
         }catch (Exception e){
             exceptionThrown = true;
             Boolean expectedExceptionThrown =  (e.getMessage().contains('Conflict:')) ? true : false; 
-            Assert.areEqual(true, expectedExceptionThrown, e.getMessage()); 
+            Assert.areEqual(true, expectedExceptionThrown, e.getMessage());
         }
         Assert.areEqual(true, exceptionThrown, 'No exception was thrown');
     }
