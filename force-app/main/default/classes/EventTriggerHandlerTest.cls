@@ -2,12 +2,12 @@
 * @File Name    :   EventTriggerHandlerTest
 * @Description  :   Test Event Trigger and Handler for the Event object
 * @Date Created :   22/02/2024
-* @Author       :   Turgay K.
+* @Author       :   Tyler K.
 * @Modification Log:
 * @User Story   :   Prevent double bookings for the Event object - 0001
 * ____________________________________________________________________________________
 * Ver       Date           Author                   Modification
-* 1.0       22/6/2024      Turgay K.                Intial Version
+* 1.0       22/6/2024      Tyler K.                 Intial Version
 * ____________________________________________________________________________________
 */
 
