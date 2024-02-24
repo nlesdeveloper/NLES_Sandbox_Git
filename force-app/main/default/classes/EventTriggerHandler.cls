@@ -1,3 +1,16 @@
+/*
+* @File Name    :   EventTriggerHandler
+* @Description  :   Prevent double bookings for the Event object
+* @Date Created :   22/02/2024
+* @Author       :   Turgay K.
+* @Modification Log:
+* @User Story   :   Prevent double bookings for the Event object - 0001
+* ____________________________________________________________________________________
+* Ver       Date           Author                   Modification
+* 1.0       22/6/2024      Turgay K.                Intial Version
+* ____________________________________________________________________________________
+*/
+
 public with sharing class EventTriggerHandler {
   public static void eventTriggerHandlerBeforeInsert(List<Event> triggerNew) {
 
