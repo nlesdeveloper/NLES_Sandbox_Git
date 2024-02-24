@@ -1,15 +1,15 @@
 /*
-* @File Name    :   EventTrigger
-* @Description  :   Trigger on Event object Before Insert and Before Update
-* @Date Created :   22/02/2024
-* @Author       :   Tyler K.
-* @Modification Log:
-* @User Story   :   Prevent double bookings for the Event object - 0001
-* ____________________________________________________________________________________
-* Ver       Date           Author                   Modification
-* 1.0       22/6/2024      Tyler K.                 Initial Version
-* ____________________________________________________________________________________
-*/
+ * @File Name    :   EventTrigger
+ * @Description  :   Trigger on Event object Before Insert and Before Update
+ * @Date Created :   22/02/2024
+ * @Author       :   Tyler K.
+ * @Modification Log:
+ * @User Story   :   Prevent double bookings for the Event object - 0001
+ * ____________________________________________________________________________________
+ * Ver       Date           Author                   Modification
+ * 1.0       22/6/2024      Tyler K.                 Initial Version
+ * ____________________________________________________________________________________
+ */
 
 trigger EventTrigger on Event(before insert, before update) {
   if (Trigger.isBefore) {
