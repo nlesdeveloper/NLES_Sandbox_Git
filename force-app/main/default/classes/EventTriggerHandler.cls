@@ -35,7 +35,7 @@ public with sharing class EventTriggerHandler {
         for (Event eachOrgEvent : mapRoomsAndListEvents.get(eachNewEvent.Subject)) {
           if ((eachNewEvent.StartDateTime >= (eachOrgEvent.StartDateTime.addHours(-1)) && eachNewEvent.StartDateTime < (eachOrgEvent.EndDateTime.addHours(+1))
         ||   (eachNewEvent.EndDateTime > (eachOrgEvent.StartDateTime.addHours(-1)) && eachNewEvent.EndDateTime <= (eachOrgEvent.EndDateTime.addHours(+1))))) {
-            eachNewEvent.addError('Conflict: There is already a scheduled event in this room for this time interval.');
+            eachNewEvent.addError(System.Label.Event_Custom_Error_Message);
           }
         }
       }
@@ -69,7 +69,7 @@ public with sharing class EventTriggerHandler {
             if (eachNewEvent.Id != eachOrgEvent.Id
         &&     (eachNewEvent.StartDateTime >= (eachOrgEvent.StartDateTime.addHours(-1)) && eachNewEvent.StartDateTime < (eachOrgEvent.EndDateTime.addHours(+1))
         ||     (eachNewEvent.EndDateTime > (eachOrgEvent.StartDateTime.addHours(-1)) && eachNewEvent.EndDateTime <= (eachOrgEvent.EndDateTime.addHours(+1))))) {
-              eachNewEvent.addError('Conflict: There is already a scheduled event in this room for this time interval.');
+              eachNewEvent.addError(System.Label.Event_Custom_Error_Message);
             }
           }
         }
