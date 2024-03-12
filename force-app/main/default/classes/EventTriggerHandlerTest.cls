@@ -18,7 +18,7 @@ private class EventTriggerHandlerTest {
     static void testSetup() {
         
         List<event> listEvents = new List<Event>{
-            //events for Insert
+                //events for Insert
                 new event(Subject = 'Board Room', isAllDayEvent = false, StartDateTime = Datetime.now().addHours(0), EndDateTime = Datetime.now().addHours(2)),
                 new event(Subject = 'Board Room', isAllDayEvent = true, StartDateTime = Date.newInstance(2024, 03, 10), EndDateTime = Date.newInstance(2024, 03, 10)),
                 new event(Subject = 'Board Room', isAllDayEvent = true, StartDateTime = Date.newInstance(2024, 03, 12), EndDateTime = Date.newInstance(2024, 03, 13)),
@@ -39,18 +39,6 @@ private class EventTriggerHandlerTest {
                 new event(Subject = 'Trillium', isAllDayEvent = true, StartDateTime = DateTime.newInstance(2024, 03, 29, 0, 0, 0), EndDateTime = DateTime.newInstance(2024, 03, 29, 0, 0, 0))
                 };
                     insert listEvents;
-        
-        System.debug(listEvents[0]);
-        System.debug(listEvents[1]);
-        System.debug(listEvents[2]);
-        System.debug(listEvents[3]);
-        System.debug(listEvents[4]);
-        System.debug(listEvents[5]);
-        System.debug(listEvents[6]);
-        System.debug(listEvents[7]);
-        System.debug(listEvents[8]);
-        System.debug(listEvents[9]);
-        System.debug(listEvents[10]);
     }
     
     @isTest
@@ -71,15 +59,6 @@ private class EventTriggerHandlerTest {
                     try {
                         Test.startTest();
                         insert listEvents;
-                        System.debug(listEvents[0]);
-                        System.debug(listEvents[1]);
-                        System.debug(listEvents[2]);
-                        System.debug(listEvents[3]);
-                        System.debug(listEvents[4]);
-                        System.debug(listEvents[5]);
-                        System.debug(listEvents[6]);
-                        System.debug(listEvents[7]);
-                        
                         Test.stopTest();
                     } catch (Exception e) {
                         exceptionThrown = true;
