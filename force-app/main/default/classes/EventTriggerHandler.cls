@@ -24,7 +24,7 @@ public with sharing class EventTriggerHandler {
         }else{
             dayEndHour = 5;
         }
-        List<Event> listOfOrgEvents = [SELECT Subject, StartDateTime, EndDateTime, isAllDayEvent, ActivityDate FROM Event /*WHERE ActivityDate >= TODAY WITH SECURITY_ENFORCED*/];
+        List<Event> listOfOrgEvents = [SELECT Subject, StartDateTime, EndDateTime, isAllDayEvent, ActivityDate FROM Event WHERE ActivityDate >= TODAY WITH SECURITY_ENFORCED];
         
         //Map of org events by their subject names (key) and List of Events (value)
         Map<String, List<Event>> mapRoomsAndListEvents = new Map<String, List<Event>>();
